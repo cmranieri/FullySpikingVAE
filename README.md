@@ -29,7 +29,7 @@ python demo.py
 
 # Training Fully Spiking VAE
 ```
-python main_fsvae exp_name -config NetworkConfigs/dataset_name.yaml
+python main_fsvae.py exp_name -config NetworkConfigs/dataset_name.yaml
 ```
 
 Training settings are defined in `NetworkConfigs/*.yaml`.
@@ -50,7 +50,7 @@ tensorboard --logdir checkpoint --bind_all --port 8009
 As a comparison method, we prepared vanilla VAEs of the same network architecture built with ANN, and trained on the same settings.
 
 ```
-python main_ann_vae exp_name -dataset dataset_name
+python main_ann_vae.py exp_name -dataset dataset_name
 ```
 
 args: 

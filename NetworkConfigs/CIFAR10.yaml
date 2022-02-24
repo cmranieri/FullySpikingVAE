@@ -1,6 +1,6 @@
 Network:
   epochs: 150
-  batch_size: 250
+  batch_size: 32
   n_steps: 16 # timestep
   dataset: "CIFAR10"
   in_channels: 3
