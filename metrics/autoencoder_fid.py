@@ -19,7 +19,7 @@ def get_autoencoder_frechet_distance(model, dataset, device, num_gen=5000):
         return sampled_x
 
     score = compute_autoencoder_frechet_distance(gen=sample_from_vae, dataset_name=dataset,
-            num_gen=num_gen, batch_size=256, device=device)
+            num_gen=num_gen, batch_size=32, device=device)
 
     return score
 
@@ -29,11 +29,11 @@ def get_autoencoder_frechet_distance_ann(model, dataset, device, num_gen=5000):
         return sampled_x
 
     score = compute_autoencoder_frechet_distance(gen=sample_from_vae, dataset_name=dataset,
-            num_gen=num_gen, batch_size=256, device=device)
+            num_gen=num_gen, batch_size=32, device=device)
 
     return score
 
-def compute_autoencoder_frechet_distance(gen, dataset_name, num_gen=5000, batch_size=256, 
+def compute_autoencoder_frechet_distance(gen, dataset_name, num_gen=5000, batch_size=32, 
                                         device=torch.device("cuda")):
     if dataset_name.lower() == 'mnist':     
         in_channels = 1 
@@ -78,7 +78,7 @@ def compute_autoencoder_frechet_distance(gen, dataset_name, num_gen=5000, batch_
 
 
 def make_custom_stats(stat_name, dataset_name, checkpoint, latent_dim=64, 
-                        batch_size=256, device=torch.device("cuda")):
+                        batch_size=32, device=torch.device("cuda")):
     stats_folder = 'metrics/stats/'
     outname = f'{stat_name}.npz'
     outf = os.path.join(stats_folder, outname)

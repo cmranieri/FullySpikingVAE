@@ -1,6 +1,6 @@
 Network:
-  epochs: 150
-  batch_size: 250
+  epochs: 50
+  batch_size: 32
   n_steps: 16 # timestep
   dataset: "FashionMNIST"
   in_channels: 1
@@ -14,5 +14,3 @@ Network:
   scheduled: true # whether to apply scheduled sampling
   loss_func: 'mmd' # mmd or kld
 
-
-  

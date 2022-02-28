@@ -124,6 +124,9 @@ def test(network, testloader, epoch):
 
     count_mul_add, hook_handles = add_hook(net)
 
+    # eval() is a kind of switch for some specific layers/parts
+    # of the model that behave differently during training and 
+    # inference (evaluating) time
     network = network.eval()
     with torch.no_grad():
         for batch_idx, (real_img, labels) in enumerate(testloader):   
@@ -188,11 +191,12 @@ def sample(network, epoch, batch_size=128):
         os.makedirs(f'checkpoint/{args.name}/imgs/sample/', exist_ok=True)
         torchvision.utils.save_image((sampled_x+1)/2, f'checkpoint/{args.name}/imgs/sample/epoch{epoch}_sample.png')
 
-def calc_inception_score(network, epoch, batch_size=256):
+def calc_inception_score(network, epoch, batch_size=32):
     network = network.eval()
     with torch.no_grad():
         if (epoch%5 == 0) or epoch==glv.network_config['epochs']-1:
-            batch_times=10
+            #batch_times=10
+            batch_times=4
         else:
             batch_times=4
         inception_mean, inception_std = inception_score.get_inception_score(network, device=init_device, batch_size=batch_size, batch_times=batch_times)

@@ -26,7 +26,7 @@ def get_clean_fid_score(model, dataset, device, num_gen=5000):
         return sampled_x
 
     score = fid.compute_fid(gen=sample_from_vae, dataset_name=dataset_name,
-            num_gen=num_gen, dataset_split="custom", batch_size=256, device=device, z_dim=2)
+            num_gen=num_gen, dataset_split="custom", batch_size=32, device=device, z_dim=2)
 
     return score
 
@@ -56,6 +56,6 @@ def get_clean_fid_score_ann(model, dataset, device, num_gen=5000):
         return sampled_x
 
     score = fid.compute_fid(gen=sample_from_vae, dataset_name=dataset_name,
-            num_gen=num_gen, dataset_split="custom", batch_size=256, device=device, z_dim=2)
+            num_gen=num_gen, dataset_split="custom", batch_size=32, device=device, z_dim=2)
 
     return score

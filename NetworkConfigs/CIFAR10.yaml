@@ -1,5 +1,5 @@
 Network:
-  epochs: 150
+  epochs: 50
   batch_size: 32
   n_steps: 16 # timestep
   dataset: "CIFAR10"
@@ -15,4 +15,3 @@ Network:
   loss_func: 'mmd' # mmd or kld
 
 
-  
